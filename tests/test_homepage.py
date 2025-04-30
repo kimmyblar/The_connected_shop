@@ -3,6 +3,7 @@ import pytest
 from playwright.sync_api import sync_playwright
 from pages.homepage import Homepage
 from pages.header import Header
+from tests.pages.searchresults import SearchResults
 
 # from pages.search_results import SearchResults
 
@@ -20,6 +21,7 @@ def homepage(browser):
     page = browser.new_page()
     homepage = Homepage(page)
     header = Header(page)
+    search = SearchResults(page)
 
     homepage.navigate()
     yield homepage

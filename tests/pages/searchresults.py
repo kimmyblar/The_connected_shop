@@ -24,9 +24,13 @@ class SearchResults:
     def get_results_count(self):
         """Return the number of search results."""
         results_text = self.results_span.inner_text()
-        match = re.search(r"(\d+)", results_text)
+        match = re.search(r"(\d+)", results_text) 
         assert match is not None, "No number found in results text"
-        return int(match.group(1))
+    
+        count = int(match.group(1))
+        assert count > 0, f"Expected results count > 0, but got {count}"
+    
+        return count
 
     def verify_product_link(self, product_name: str):
         """Verify a product link is visible and matches the expected text."""
